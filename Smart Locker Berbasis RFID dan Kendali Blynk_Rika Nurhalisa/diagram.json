@@ -1,0 +1,63 @@
+{
+  "version": 1,
+  "author": "Rika Nurhalisa",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 0, "left": 0, "attrs": {} },
+    { "type": "board-mfrc522", "id": "rfid1", "top": -175.45, "left": 147.44, "attrs": {} },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd1",
+      "top": -166.4,
+      "left": -215.2,
+      "attrs": { "pins": "i2c" }
+    },
+    { "type": "wokwi-servo", "id": "servo1", "top": 36.4, "left": 163.2, "attrs": {} },
+    {
+      "type": "wokwi-buzzer",
+      "id": "bz1",
+      "top": 50.4,
+      "left": -132.6,
+      "attrs": { "volume": "0.1" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": 130.8,
+      "left": 157.4,
+      "attrs": { "color": "red" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led2",
+      "top": 130.8,
+      "left": 205.4,
+      "attrs": { "color": "green" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "rfid1:SDA", "esp:5", "green", [ "h0" ] ],
+    [ "rfid1:SCK", "esp:18", "green", [ "h0" ] ],
+    [ "rfid1:MOSI", "esp:23", "green", [ "h0" ] ],
+    [ "rfid1:MISO", "esp:19", "green", [ "h0" ] ],
+    [ "rfid1:3.3V", "esp:3V3", "green", [ "v67.2", "h-148.99" ] ],
+    [ "rfid1:GND", "esp:GND.2", "black", [ "h0" ] ],
+    [ "lcd1:VCC", "esp:5V", "red", [ "h-28.8", "v326.5" ] ],
+    [ "lcd1:GND", "esp:GND.2", "black", [ "h-38.4", "v163.2" ] ],
+    [ "lcd1:SDA", "esp:21", "green", [ "h-19.2", "v105.8", "h331.16" ] ],
+    [ "lcd1:SCL", "esp:22", "green", [ "h-9.6", "v86.7", "h321.56" ] ],
+    [ "servo1:V+", "esp:5V", "green", [ "h-28.8", "v124.9", "h-129.79" ] ],
+    [ "servo1:GND", "esp:GND.2", "black", [ "h-28.8", "v-57.6" ] ],
+    [ "servo1:PWM", "esp:13", "green", [ "h0" ] ],
+    [ "bz1:1", "esp:GND.2", "black", [ "v19.2", "h86.4", "v-144", "h119.96" ] ],
+    [ "bz1:2", "esp:12", "green", [ "v0" ] ],
+    [ "led2:A", "esp:16", "green", [ "v28.8", "h-129.64" ] ],
+    [ "led1:A", "esp:17", "green", [ "v19.2", "h-81.64" ] ],
+    [ "led1:C", "esp:GND.2", "black", [ "h-18.8", "v-144" ] ],
+    [ "led2:C", "esp:GND.2", "black", [ "v9.6", "h-76.4", "v-153.6" ] ],
+    [ "rfid1:RST", "esp:27", "green", [ "h-19.2", "v48", "h-129.79" ] ]
+  ],
+  "dependencies": {}
+}
